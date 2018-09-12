@@ -1,12 +1,18 @@
 package br.com.fws.profiles.entities;
 
-public class UserInformation extends User {
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+@DynamoDBTable(tableName = "Users")
+public class UserDetails extends User {
 
 	private String id;
 	private String name;
 	private String email;
 	private String birthDate;
 
+	@DynamoDBAttribute(attributeName = "birthDate")
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -15,6 +21,7 @@ public class UserInformation extends User {
 		this.birthDate = birthDate;
 	}
 
+	@DynamoDBAttribute(attributeName = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -23,6 +30,7 @@ public class UserInformation extends User {
 		this.email = email;
 	}
 
+	@DynamoDBHashKey(attributeName = "id")
 	public String getId() {
 		return (super.getUserId().isEmpty() ? id : super.getUserId());
 	}
@@ -31,6 +39,7 @@ public class UserInformation extends User {
 		this.id = id;
 	}
 
+	@DynamoDBAttribute(attributeName = "name")
 	public String getName() {
 		return name;
 	}
