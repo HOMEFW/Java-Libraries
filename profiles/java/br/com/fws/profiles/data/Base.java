@@ -40,6 +40,7 @@ public class Base<T> {
 		// DynamoDBMapper mapper = new DynamoDBMapper(client);
 		Class<T> objectClass = null;
 		List<T> replies = mapper.scan((Class<T>) objectClass, scanExpression);
+
 		return replies.get(0);
 	}
 

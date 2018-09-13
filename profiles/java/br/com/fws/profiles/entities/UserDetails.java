@@ -1,17 +1,39 @@
 package br.com.fws.profiles.entities;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 
-@DynamoDBTable(tableName = "Users")
-public class UserDetails extends User {
+public class UserDetails {
 
-	private String id;
-	private String name;
-	private String email;
+	private boolean active;
+	private int accessCounter;
 	private String birthDate;
+	private boolean blocked;
+	private String name;
+	private String ultimoAcesso;
 
+	@DynamoDBTyped(DynamoDBAttributeType.N)
+	@DynamoDBAttribute(attributeName = "accessCounter")
+	public int getAccessCounter() {
+		return accessCounter;
+	}
+
+	public void setAccessCounter(int accessCounter) {
+		this.accessCounter = accessCounter;
+	}
+
+	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
+	@DynamoDBAttribute(attributeName = "active")
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	@DynamoDBTyped(DynamoDBAttributeType.S)
 	@DynamoDBAttribute(attributeName = "birthDate")
 	public String getBirthDate() {
 		return birthDate;
@@ -21,24 +43,17 @@ public class UserDetails extends User {
 		this.birthDate = birthDate;
 	}
 
-	@DynamoDBAttribute(attributeName = "email")
-	public String getEmail() {
-		return email;
+	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
+	@DynamoDBAttribute(attributeName = "blocked")
+	public boolean isBlocked() {
+		return blocked;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 
-	@DynamoDBHashKey(attributeName = "id")
-	public String getId() {
-		return (super.getUserId().isEmpty() ? id : super.getUserId());
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	@DynamoDBTyped(DynamoDBAttributeType.S)
 	@DynamoDBAttribute(attributeName = "name")
 	public String getName() {
 		return name;
@@ -46,6 +61,16 @@ public class UserDetails extends User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@DynamoDBTyped(DynamoDBAttributeType.S)
+	@DynamoDBAttribute(attributeName = "lastAccess")
+	public String getUltimoAcesso() {
+		return ultimoAcesso;
+	}
+
+	public void setUltimoAcesso(String ultimoAcesso) {
+		this.ultimoAcesso = ultimoAcesso;
 	}
 
 }
