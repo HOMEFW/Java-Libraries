@@ -16,24 +16,26 @@ public class Login {
 		String message = "";
 		Base<User> base = new Base<User>();
 
-		Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
-		eav.put(":val1", new AttributeValue().withS(data.getLogin()));
-		// eav.put(":val2", new AttributeValue().withN(value));
+		try {
 
-		// DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-		// .withFilterExpression("Price < :val1 and ProductCategory =
-		// :val2").withExpressionAttributeValues(eav);
+			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
+			map.put(":login", new AttributeValue().withS(data.getLogin()));
 
-		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-				.withFilterExpression("login = :val1 and userId = userId").withExpressionAttributeValues(eav);
+			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("login = :login")
+					.withExpressionAttributeValues(map);
 
-		User user = base.getItem(scanExpression);
-		base = null;
+			User user = base.getItem(scanExpression);
 
-		if (user.getPassword().equals(data.getPassword())) {
-			message = "you´re in";
-		} else {
-			message = "error";
+			base = null;
+
+			if (user.getPassword().equals(data.getPassword())) {
+				message = "you´re in";
+			} else {
+				message = "error";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return message;

@@ -9,6 +9,8 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
+import br.com.fws.profiles.entities.User;
+
 public class Base<T> {
 
 	static AmazonDynamoDB client;
@@ -31,15 +33,14 @@ public class Base<T> {
 
 	public List<T> getListByScan(DynamoDBScanExpression scanExpression) {
 
-		Class<T> objectClass = null;
-		List<T> replies = mapper.scan((Class<T>) objectClass, scanExpression);
+		List<T> replies = (List<T>) mapper.scan(User.class, scanExpression);
 		return replies;
 	}
 
 	public T getItem(DynamoDBScanExpression scanExpression) {
 		// DynamoDBMapper mapper = new DynamoDBMapper(client);
-		Class<T> objectClass = null;
-		List<T> replies = mapper.scan((Class<T>) objectClass, scanExpression);
+
+		List<T> replies = (List<T>) mapper.scan(User.class, scanExpression);
 
 		return replies.get(0);
 	}
