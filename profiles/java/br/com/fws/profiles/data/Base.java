@@ -37,12 +37,18 @@ public class Base<T> {
 		return replies;
 	}
 
-	public T getItem(DynamoDBScanExpression scanExpression) {
-		// DynamoDBMapper mapper = new DynamoDBMapper(client);
-
-		List<T> replies = (List<T>) mapper.scan(User.class, scanExpression);
-
-		return replies.get(0);
+	public T getItem(DynamoDBScanExpression scanExpression, Class<T> T) {
+		try {
+			List<T> replies = mapper.scan(T, scanExpression);
+			if (replies.size() > 0) {
+				return replies.get(0);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public void saveItem(T item) {

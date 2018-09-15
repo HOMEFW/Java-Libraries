@@ -11,10 +11,13 @@ import br.com.fws.profiles.data.Base;
 import br.com.fws.profiles.entities.User;
 
 public class Login {
+	Base<User> base = null;
 
-	public String doLogin(User data) {
-		String message = "";
-		Base<User> base = new Base<User>();
+	public Login() {
+		base = new Base<User>();
+	}
+
+	public void doLogin(User data) throws Exception {
 
 		try {
 
@@ -24,36 +27,76 @@ public class Login {
 			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("login = :login")
 					.withExpressionAttributeValues(map);
 
-			User user = base.getItem(scanExpression);
+			User user = base.getItem(scanExpression, User.class);
 
-			base = null;
-
-			if (user.getPassword().equals(data.getPassword())) {
-				message = "you´re in";
-			} else {
-				message = "error";
+			if (!user.getPassword().equals(data.getPassword())) {
+				throw new IllegalArgumentException("Invalid user or password!");
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
+
+		}
+	}
+
+	public void doRegister(User data) throws Exception {
+		try {
+			String message = "";
+
+			if (data.getLogin() == null && data.getEmail() == null) {
+				throw new IllegalArgumentException("Invalid data");
+			}
+
+			message = checkLogin(data);
+
+			message = checkEmail(data);
+
+			if (!message.isEmpty()) {
+				throw new IllegalArgumentException(message);
+			}
+
+			if (data.getUserId() == null) {
+				UUID uuid = UUID.randomUUID();
+				data.setUserId(uuid.toString().replaceAll("-", ""));
+			}
+
+			base.saveItem(data);
+
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	private String checkLogin(User data) {
+		String message = "";
+		if (data.getLogin() != null) {
+			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
+			map.put(":login", new AttributeValue().withS(data.getLogin()));
+
+			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("login = :login")
+					.withExpressionAttributeValues(map);
+
+			User user = base.getItem(scanExpression, User.class);
+			if (user != null)
+				message = "Login already exists;";
 		}
 
 		return message;
 	}
 
-	public String doRegister(User data) {
+	private String checkEmail(User data) {
+		String message = "";
+		if (data.getEmail() != null) {
+			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
+			map.put(":email", new AttributeValue().withS(data.getEmail()));
 
-		Base<User> base = new Base<User>();
+			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("email = :email")
+					.withExpressionAttributeValues(map);
 
-		if (data.getUserId() == null) {
-			UUID uuid = UUID.randomUUID();
-			data.setUserId(uuid.toString().replaceAll("-", ""));
+			User user = base.getItem(scanExpression, User.class);
+			if (user != null)
+				message = "Email already exists;";
 		}
-
-		base.saveItem(data);
-
-		base = null;
-
-		return "registered";
+		return message;
 	}
 }

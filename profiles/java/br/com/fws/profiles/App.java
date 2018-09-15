@@ -13,9 +13,9 @@ public class App {
 
 		User user = new User();
 		UserDetails userDetails = new UserDetails();
-		user.setLogin("123");
+		user.setLogin("562");
 		user.setPassword("pass");
-		user.setEmail("email@email.com");
+		user.setEmail("562@email.com");
 
 		userDetails.setBirthDate("01/01/2012");
 		userDetails.setName("new User");
@@ -24,9 +24,18 @@ public class App {
 		user.setDetails(userDetails);
 
 		Login login = new Login();
-		System.out.println(login.doRegister(user));
 
-		System.out.println(login.doLogin(user));
+		try {
+			login.doRegister(user);
+
+			login.doLogin(user);
+
+			System.out.println("Logged in");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
 
 	}
 }
