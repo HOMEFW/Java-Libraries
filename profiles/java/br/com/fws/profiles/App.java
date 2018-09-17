@@ -13,9 +13,9 @@ public class App {
 
 		User user = new User();
 		UserDetails userDetails = new UserDetails();
-		user.setLogin("562");
+		user.setLogin("5676");
 		user.setPassword("pass");
-		user.setEmail("562@email.com");
+		user.setEmail("5676@email.com");
 
 		userDetails.setBirthDate("01/01/2012");
 		userDetails.setName("new User");
@@ -24,16 +24,21 @@ public class App {
 		user.setDetails(userDetails);
 
 		Login login = new Login();
+		Register register = new Register();
 
 		try {
-			login.doRegister(user);
+			register.doRegister(user);
 
+			user.setPassword("pass");
 			login.doLogin(user);
 
 			System.out.println("Logged in");
 
+		} catch (IllegalArgumentException ia) {
+			// ia.printStackTrace();
+			System.out.println(ia.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 
