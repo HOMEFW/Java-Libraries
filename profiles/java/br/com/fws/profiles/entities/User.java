@@ -15,6 +15,7 @@ public class User {
 	private String login;
 	private String password;
 	private String userId;
+	private String registerDate;
 
 	@DynamoDBAttribute(attributeName = "details")
 	@DynamoDBTyped(DynamoDBAttributeType.M)
@@ -54,6 +55,16 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@DynamoDBTyped(DynamoDBAttributeType.S)
+	@DynamoDBAttribute(attributeName = "registerDate")
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
 
 	@DynamoDBTyped(DynamoDBAttributeType.S)

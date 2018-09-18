@@ -17,9 +17,23 @@ public class Login {
 		base = new Base<User>();
 	}
 
-	public void doLogin(User data) throws Exception {
-
+	/**
+	 * @param data
+	 *            - login & password obrigatórios
+	 * @return UserId em caso de sucesso
+	 * @throws IllegalArgumentException
+	 *             Em caso de erro na informação
+	 * @throws Exception
+	 *             for any other exception
+	 */
+	public String doLogin(User data) throws Exception {
 		try {
+
+			if (data.getLogin() != null && data.getLogin().length() <= 0)
+				throw new IllegalArgumentException("please fill user information!");
+
+			if (data.getPassword() != null && data.getPassword().length() <= 0)
+				throw new IllegalArgumentException("please fill password information!");
 
 			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
 			map.put(":login", new AttributeValue().withS(data.getLogin()));
@@ -31,8 +45,9 @@ public class Login {
 
 			if (user == null || !user.getPassword().equals(Encryption.Generate(data.getPassword()))) {
 				throw new IllegalArgumentException("Invalid user or password!");
+			} else {
+				return user.getUserId();
 			}
-
 		} catch (Exception e) {
 			throw e;
 		}

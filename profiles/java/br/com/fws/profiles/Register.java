@@ -1,5 +1,7 @@
 package br.com.fws.profiles;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -34,6 +36,9 @@ public class Register {
 				UUID uuid = UUID.randomUUID();
 				data.setUserId(uuid.toString().replaceAll("-", ""));
 				data.setPassword(Encryption.Generate(data.getPassword()));
+				String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
+				SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+				data.setRegisterDate(sdf.format(new Date()));
 			}
 
 			base.saveItem(data);
