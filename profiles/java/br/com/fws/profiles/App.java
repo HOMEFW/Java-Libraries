@@ -29,10 +29,16 @@ public class App {
 
 			// register.doRegister(user);
 
-			// user.setPassword("pass");
+			user.setPassword("pass");
 			login.doLogin(user);
 
-			System.out.println("Logged in");
+			String userId = login.doLogin(user);
+			System.out.println("User " + userId + ", your're Logged in!");
+
+			userDetails.setName("nome alterado!");
+			userDetails.setBirthDate("99/99/9999");
+			String retorno = register.doUpdate(userId, userDetails);
+			System.out.println(retorno);
 
 		} catch (IllegalArgumentException ia) {
 			// ia.printStackTrace();
