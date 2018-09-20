@@ -10,11 +10,9 @@ import br.com.fws.commom.Encryption;
 import br.com.fws.profiles.data.Base;
 import br.com.fws.profiles.entities.User;
 
-public class Login {
-	Base<User> base = null;
+public class Login extends Base<User> {
 
 	public Login() {
-		base = new Base<User>();
 	}
 
 	/**
@@ -41,7 +39,7 @@ public class Login {
 			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("login = :login")
 					.withExpressionAttributeValues(map);
 
-			User user = base.getItem(scanExpression, User.class);
+			User user = super.getItem(scanExpression, User.class);
 
 			if (user == null || !user.getPassword().equals(Encryption.Generate(data.getPassword()))) {
 				throw new IllegalArgumentException("Invalid user or password!");

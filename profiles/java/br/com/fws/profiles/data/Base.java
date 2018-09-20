@@ -29,13 +29,13 @@ public class Base<T> {
 		mapper = new DynamoDBMapper(client);
 	}
 
-	public List<T> getListByScan(DynamoDBScanExpression scanExpression, Class<T> T) {
+	protected List<T> getListByScan(DynamoDBScanExpression scanExpression, Class<T> T) {
 
 		List<T> replies = mapper.scan(T, scanExpression);
 		return replies;
 	}
 
-	public T getItem(DynamoDBScanExpression scanExpression, Class<T> T) {
+	protected T getItem(DynamoDBScanExpression scanExpression, Class<T> T) {
 		try {
 			List<T> replies = mapper.scan(T, scanExpression);
 			if (replies.size() > 0) {
@@ -49,21 +49,18 @@ public class Base<T> {
 		}
 	}
 
-	public void saveItem(T item) {
+	protected void saveItem(T item) {
 		// DynamoDBMapper mapper = new DynamoDBMapper(client);
-
 		try {
-
 			mapper.generateCreateTableRequest(item.getClass());
 			mapper.save(item);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	public void deleteItem(T item) {
+	protected void deleteItem(T item) {
 		// DynamoDBMapper mapper = new DynamoDBMapper(client);
 		mapper.delete(item);
 	}

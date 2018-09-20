@@ -36,7 +36,7 @@ public class App {
 			System.out.println("User " + userId + ", your're Logged in!");
 
 			userDetails.setName("nome alterado!");
-			userDetails.setBirthDate("99/99/9999");
+			userDetails.setBirthDate("12/12/2012");
 			String retorno = register.doUpdate(userId, userDetails);
 			System.out.println(retorno);
 

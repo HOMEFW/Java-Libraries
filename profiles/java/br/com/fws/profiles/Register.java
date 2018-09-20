@@ -14,12 +14,13 @@ import br.com.fws.profiles.data.Base;
 import br.com.fws.profiles.entities.User;
 import br.com.fws.profiles.entities.UserDetails;;
 
-public class Register {
+public class Register extends Base<User> {
 
-	Base<User> base = null;
+	// Base<User> base = null;
 
 	public Register() {
-		base = new Base<User>();
+		super();
+		// base = new Base<User>();
 	}
 
 	public void doRegister(User data) throws Exception {
@@ -42,7 +43,7 @@ public class Register {
 				data.setRegisterDate(sdf.format(new Date()));
 			}
 
-			base.saveItem(data);
+			super.saveItem(data);
 
 		} catch (IllegalArgumentException a) {
 			throw a;
@@ -59,7 +60,7 @@ public class Register {
 			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("login = :login")
 					.withExpressionAttributeValues(map);
 
-			User user = base.getItem(scanExpression, User.class);
+			User user = super.getItem(scanExpression, User.class);
 			if (user != null)
 				throw new IllegalArgumentException("Login already exists;");
 		}
@@ -74,7 +75,7 @@ public class Register {
 			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression().withFilterExpression("email = :email")
 					.withExpressionAttributeValues(map);
 
-			User user = base.getItem(scanExpression, User.class);
+			User user = super.getItem(scanExpression, User.class);
 			if (user != null)
 				throw new IllegalArgumentException("Email already exists;");
 		}
@@ -87,8 +88,7 @@ public class Register {
 			if (userId == null || details == null) {
 				throw new IllegalAccessError("dados inválidos!");
 			}
-
-			Base<User> base = new Base<User>();
+			// Base<User> base = new Base<User>();
 
 			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
 			map.put(":userId", new AttributeValue().withS(userId));
@@ -96,7 +96,7 @@ public class Register {
 			DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
 					.withFilterExpression("userId = :userId").withExpressionAttributeValues(map);
 
-			User user = base.getItem(scanExpression, User.class);
+			User user = super.getItem(scanExpression, User.class);
 
 			if (user == null) {
 				throw new IllegalAccessError("usuário não encontrado!");
@@ -108,7 +108,7 @@ public class Register {
 
 			user.setDetails(userDetails);
 
-			base.saveItem(user);
+			super.saveItem(user);
 
 			return "success!";
 
