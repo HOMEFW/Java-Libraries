@@ -30,7 +30,6 @@ public class Base<T> {
 	}
 
 	protected List<T> getListByScan(DynamoDBScanExpression scanExpression, Class<T> T) {
-
 		List<T> replies = mapper.scan(T, scanExpression);
 		return replies;
 	}
