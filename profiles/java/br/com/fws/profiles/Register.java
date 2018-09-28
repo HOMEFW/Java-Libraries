@@ -16,29 +16,23 @@ import br.com.fws.profiles.entities.UserDetails;;
 
 public class Register extends Base<User> {
 
+	// Base<User> base = null;
+
 	public Register() {
 		super();
+		// base = new Base<User>();
 	}
 
-	/**
-	 * @param data
-	 * @return
-	 * @throws Exception
-	 */
-	public String doRegister(User data) throws Exception {
+	public void doRegister(User data) throws Exception {
 		try {
 
 			if (data.getLogin() == null && data.getEmail() == null) {
-				return Mensagens.DADOSINVALIDOS;
+				throw new IllegalArgumentException("Invalid data");
 			}
 
-			if (loginExists(data)) {
-				return Mensagens.LOGINEXISTE;
-			}
+			checkLogin(data);
 
-			if (emailExists(data)) {
-				return Mensagens.EMAILEXISTE;
-			}
+			checkEmail(data);
 
 			if (data.getUserId() == null) {
 				UUID uuid = UUID.randomUUID();
@@ -51,15 +45,14 @@ public class Register extends Base<User> {
 
 			super.saveItem(data);
 
-			return Mensagens.COMSUCESSO;
+		} catch (IllegalArgumentException a) {
+			throw a;
 		} catch (Exception e) {
-			return Mensagens.SEMSUCESSO;
-			// throw e;
+			throw e;
 		}
 	}
 
-	private Boolean loginExists(User data) {
-		Boolean valid = false;
+	private void checkLogin(User data) {
 		if (data.getLogin() != null) {
 			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
 			map.put(":login", new AttributeValue().withS(data.getLogin()));
@@ -68,13 +61,12 @@ public class Register extends Base<User> {
 					.withExpressionAttributeValues(map);
 
 			User user = super.getItem(scanExpression, User.class);
-			valid = (user != null);
+			if (user != null)
+				throw new IllegalArgumentException("Login already exists;");
 		}
-		return valid;
 	}
 
-	private Boolean emailExists(User data) {
-		Boolean valid = false;
+	private void checkEmail(User data) {
 
 		if (data.getEmail() != null) {
 			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
@@ -84,19 +76,19 @@ public class Register extends Base<User> {
 					.withExpressionAttributeValues(map);
 
 			User user = super.getItem(scanExpression, User.class);
-
-			valid = (user != null);
+			if (user != null)
+				throw new IllegalArgumentException("Email already exists;");
 		}
 
-		return valid;
 	}
 
 	public String doUpdate(String userId, UserDetails details) throws Exception, IllegalArgumentException {
 		try {
 
 			if (userId == null || details == null) {
-				return Mensagens.DADOSINVALIDOS;
+				throw new IllegalAccessError("dados inválidos!");
 			}
+			// Base<User> base = new Base<User>();
 
 			Map<String, AttributeValue> map = new HashMap<String, AttributeValue>();
 			map.put(":userId", new AttributeValue().withS(userId));
@@ -107,7 +99,7 @@ public class Register extends Base<User> {
 			User user = super.getItem(scanExpression, User.class);
 
 			if (user == null) {
-				return Mensagens.USUARIONAOENCONTRADO;
+				throw new IllegalAccessError("usuário não encontrado!");
 			}
 
 			UserDetails userDetails = (user.getDetails() == null) ? new UserDetails() : user.getDetails();
@@ -118,11 +110,10 @@ public class Register extends Base<User> {
 
 			super.saveItem(user);
 
-			return Mensagens.COMSUCESSO;
+			return "success!";
 
 		} catch (Exception e) {
-			return Mensagens.SEMSUCESSO;
-			// throw e;
+			throw e;
 		}
 	}
 }

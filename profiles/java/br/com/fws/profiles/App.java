@@ -4,7 +4,7 @@ import br.com.fws.profiles.entities.User;
 import br.com.fws.profiles.entities.UserDetails;
 
 /**
- * Hello world!
+ * Hello world
  *
  */
 public class App {
