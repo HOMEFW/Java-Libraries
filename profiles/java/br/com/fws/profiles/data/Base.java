@@ -11,7 +11,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
 public class Base<T> {
 
-	static AmazonDynamoDB client;
+	public static AmazonDynamoDB client;
 	DynamoDBMapper mapper;
 	ProfileCredentialsProvider credentialsProvider;
 
@@ -26,17 +26,18 @@ public class Base<T> {
 		}
 		client = AmazonDynamoDBClientBuilder.standard().withCredentials(credentialsProvider).withRegion("us-east-2")
 				.build();
-		mapper = new DynamoDBMapper(client);
+
 	}
 
 	protected List<T> getListByScan(DynamoDBScanExpression scanExpression, Class<T> T) {
-
+		mapper = new DynamoDBMapper(client);
 		List<T> replies = mapper.scan(T, scanExpression);
 		return replies;
 	}
 
 	protected T getItem(DynamoDBScanExpression scanExpression, Class<T> T) {
 		try {
+			mapper = new DynamoDBMapper(client);
 			List<T> replies = mapper.scan(T, scanExpression);
 			if (replies.size() > 0) {
 				return replies.get(0);
@@ -50,8 +51,8 @@ public class Base<T> {
 	}
 
 	protected void saveItem(T item) {
-		// DynamoDBMapper mapper = new DynamoDBMapper(client);
 		try {
+			mapper = new DynamoDBMapper(client);
 			mapper.generateCreateTableRequest(item.getClass());
 			mapper.save(item);
 
@@ -61,7 +62,8 @@ public class Base<T> {
 	}
 
 	protected void deleteItem(T item) {
-		// DynamoDBMapper mapper = new DynamoDBMapper(client);
+		mapper = new DynamoDBMapper(client);
 		mapper.delete(item);
 	}
+
 }
