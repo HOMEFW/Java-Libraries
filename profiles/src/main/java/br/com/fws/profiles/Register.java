@@ -82,7 +82,7 @@ public class Register extends Base<User> {
 
 	}
 
-	public Boolean doUpdate(String userId, UserDetails details) throws Exception, IllegalArgumentException {
+	protected Boolean doUpdate(String userId, UserDetails details) throws Exception, IllegalArgumentException {
 		try {
 
 			if (userId == null || details == null) {

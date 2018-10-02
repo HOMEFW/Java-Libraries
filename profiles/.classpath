@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/commom"/>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391-sources.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.amazonaws"/>
-			<attribute name="maven.artifactId" value="aws-java-sdk-dynamodb"/>
-			<attribute name="maven.version" value="1.11.391"/>
-			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/commom"/>
+	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,6 +1,8 @@
 package br.com.fws.profiles.data;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
@@ -8,12 +10,17 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 
 public class Base<T> {
+
+	protected int pageSize = 10;
 
 	public static AmazonDynamoDB client;
 	DynamoDBMapper mapper;
@@ -30,13 +37,29 @@ public class Base<T> {
 		}
 		client = AmazonDynamoDBClientBuilder.standard().withCredentials(credentialsProvider).withRegion("us-east-2")
 				.build();
-
 	}
 
 	protected List<T> getListByScan(DynamoDBScanExpression scanExpression, Class<T> T) {
 		mapper = new DynamoDBMapper(client);
+		scanExpression.withLimit(pageSize);
 		List<T> replies = mapper.scan(T, scanExpression);
 		return replies;
+	}
+
+	protected List<T> getListByScanResultPage(DynamoDBScanExpression scanExpression, Class<T> T,
+			Map<String, AttributeValue> startKey) {
+
+		mapper = new DynamoDBMapper(client);
+
+		scanExpression.withLimit(pageSize);
+
+		if (startKey != null) {
+			scanExpression.withExclusiveStartKey(startKey);
+		}
+
+		ScanResultPage<T> scanPage = mapper.scanPage(T, scanExpression);
+
+		return scanPage.getResults();
 	}
 
 	protected T getItem(DynamoDBScanExpression scanExpression, Class<T> T) {
@@ -53,6 +76,25 @@ public class Base<T> {
 			return null;
 		}
 	}
+
+	protected final T scanResultItemToObject(HashMap<String, Condition> scan, Class<T> T) {
+
+		List<T> list = scanResultToListObject(scan, T);
+		if (list != null && list.size() > 0)
+			return list.get(0);
+
+		return null;
+	};
+
+	protected final List<T> scanResultToListObject(HashMap<String, Condition> scan, Class<T> T) {
+
+		mapper = new DynamoDBMapper(client);
+		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+		scanExpression.setScanFilter(scan);
+		List<T> replies = mapper.scan(T, scanExpression);
+		return replies;
+
+	};
 
 	protected void saveItem(T item) {
 		try {
