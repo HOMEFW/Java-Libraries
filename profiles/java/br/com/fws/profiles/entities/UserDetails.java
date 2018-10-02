@@ -10,8 +10,9 @@ public class UserDetails {
 	private int accessCounter;
 	private String birthDate;
 	private boolean blocked;
-	private String name;
-	private String ultimoAcesso;
+	private String firstName;
+	private String lastName;
+	private String lastAccess;
 
 	@DynamoDBTyped(DynamoDBAttributeType.N)
 	@DynamoDBAttribute(attributeName = "accessCounter")
@@ -54,23 +55,33 @@ public class UserDetails {
 	}
 
 	@DynamoDBTyped(DynamoDBAttributeType.S)
-	@DynamoDBAttribute(attributeName = "name")
-	public String getName() {
-		return name;
+	@DynamoDBAttribute(attributeName = "firstName")
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	@DynamoDBTyped(DynamoDBAttributeType.S)
 	@DynamoDBAttribute(attributeName = "lastAccess")
-	public String getUltimoAcesso() {
-		return ultimoAcesso;
+	public String getLastAccess() {
+		return lastAccess;
 	}
 
-	public void setUltimoAcesso(String ultimoAcesso) {
-		this.ultimoAcesso = ultimoAcesso;
+	public void setLastAccess(String lastAccess) {
+		this.lastAccess = lastAccess;
+	}
+
+	@DynamoDBTyped(DynamoDBAttributeType.S)
+	@DynamoDBAttribute(attributeName = "lastName")
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }

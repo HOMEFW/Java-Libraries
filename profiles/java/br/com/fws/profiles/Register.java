@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
-import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
@@ -91,47 +89,24 @@ public class Register extends Base<User> {
 				throw new IllegalAccessError("dados inválidos!");
 			}
 
-			DynamoDB dynamoDB = new DynamoDB(client);
-			Table table = dynamoDB.getTable("User");
-
 			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("userId", userId)
-					.withUpdateExpression("set details.name=:name, details.birthDate=:birthDate")
-					.withValueMap(new ValueMap().withString(":name", details.getName()).withString(":birthDate",
-							details.getBirthDate())
+					.withUpdateExpression(
+							"set details.firstName = :firstName, details.birthDate = :birthDate, details.lastName = :lastName")
+					.withValueMap(new ValueMap().withString(":firstName", details.getFirstName())
+							.withString(":birthDate", details.getBirthDate())
+							.withString(":lastName", details.getLastName())
 					// .withList(":a", Arrays.asList("Larry", "Moe", "Curly"))
 					).withReturnValues(ReturnValue.UPDATED_NEW);
 
-			// UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
-			table.updateItem(updateItemSpec);
+			super.updateItem("Users", updateItemSpec);
 
-			// Map<String, AttributeValue> map = new HashMap<String,
-			// AttributeValue>();
-			// map.put(":userId", new AttributeValue().withS(userId));
-			//
-			// DynamoDBScanExpression scanExpression = new
-			// DynamoDBScanExpression()
-			// .withFilterExpression("userId =
-			// :userId").withExpressionAttributeValues(map);
-			//
-			// User user = super.getItem(scanExpression, User.class);
-			//
-			// if (user == null) {
-			// throw new IllegalAccessError("usuário não encontrado!");
-			// }
-			//
-			// UserDetails userDetails = (user.getDetails() == null) ? new
-			// UserDetails() : user.getDetails();
-			// userDetails.setBirthDate(details.getBirthDate());
-			// userDetails.setName(details.getName());
-			//
-			// user.setDetails(userDetails);
-			//
-			// super.saveItem(user);
-			//
-			// return "success!";
+			// UpdateItemOutcome outcome = super.updateItem("Users",
+			// updateItemSpec);
+
 			return true;
 		} catch (Exception e) {
 			throw e;
 		}
 	}
+
 }
