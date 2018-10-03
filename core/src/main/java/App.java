@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
-import br.com.fws.core.config.Initializer;
+import br.com.fws.core.client.Client;
 import br.com.fws.core.profiles.Core;
 import br.com.fws.core.profiles.Login;
 import br.com.fws.core.profiles.Register;
@@ -19,12 +19,13 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 
-		Initializer init = new Initializer();
-		init.initializeDataBase();
+		// Initializer init = new Initializer();
+		// init.initializeDataBase();
 
 		Login login = new Login();
 		Register register = new Register();
 		Core core = new Core();
+		Client client = new Client();
 
 		try {
 			User user = new User();
@@ -42,6 +43,11 @@ public class App {
 			// user.setDetails(userDetails);
 			//
 			// register.doRegister(user);
+
+			br.com.fws.entities.Client dataClient = new br.com.fws.entities.Client();
+			dataClient.setClientName("Teste Client 1");
+			dataClient.setActive(true);
+			client.doRegister(dataClient);
 
 			user.setPassword("pass");
 			login.doLogin(user);
