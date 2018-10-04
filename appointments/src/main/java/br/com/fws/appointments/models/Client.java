@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonRootName("Client")
 @DynamoDBTable(tableName = "Client")
 @XmlRootElement(name = "Client")
-
 public class Client implements Serializable {
 
 	/**

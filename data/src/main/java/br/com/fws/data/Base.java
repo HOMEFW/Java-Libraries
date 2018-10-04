@@ -96,14 +96,16 @@ public class Base<T> {
 
 	};
 
-	protected void saveItem(T item) {
+	protected Boolean saveItem(T item) {
 		try {
 			mapper = new DynamoDBMapper(client);
 			mapper.generateCreateTableRequest(item.getClass());
 			mapper.save(item);
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
