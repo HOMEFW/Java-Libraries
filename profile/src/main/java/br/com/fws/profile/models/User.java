@@ -11,7 +11,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
-@DynamoDBTable(tableName = "Users")
+@DynamoDBTable(tableName = "User")
 public class User implements Serializable {
 
 	/**

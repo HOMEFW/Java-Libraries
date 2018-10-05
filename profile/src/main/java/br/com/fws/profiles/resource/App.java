@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
+import br.com.fws.config.Initializer;
 import br.com.fws.profile.models.User;
 import br.com.fws.profile.models.UserDetails;
 
@@ -16,8 +17,8 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 
-		// Initializer init = new Initializer();
-		// init.initializeDataBase();
+		Initializer init = new Initializer();
+		init.initializeDataBase();
 
 		Login login = new Login();
 		Register register = new Register();
@@ -28,18 +29,18 @@ public class App {
 			User user = new User();
 			UserDetails userDetails = new UserDetails();
 
-			user.setLogin("5677");
+			user.setLogin("5678");
 			user.setPassword("pass");
-			user.setEmail("5677@email.com");
+			user.setEmail("5678@email.com");
 
-			// userDetails.setBirthDate("10/01/2017");
-			// userDetails.setFirstName("new User");
-			// userDetails.setLastName("new User");
-			// userDetails.setActive(false);
-			// userDetails.setBlocked(true);
-			// user.setDetails(userDetails);
-			//
-			// register.doRegister(user);
+			userDetails.setBirthDate("10/01/2017");
+			userDetails.setFirstName("new User");
+			userDetails.setLastName("new User");
+			userDetails.setActive(false);
+			userDetails.setBlocked(true);
+			user.setDetails(userDetails);
+
+			register.doRegister(user);
 
 			// br.com.fws.models.Client dataClient = new
 			// br.com.fws.models.Client();

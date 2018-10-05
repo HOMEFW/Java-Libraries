@@ -1,4 +1,4 @@
-package br.com.fws.appointements.resource;
+package br.com.fws.appointment.resource;
 
 import javax.xml.ws.Endpoint;
 

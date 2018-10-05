@@ -44,12 +44,12 @@ public class Initializer {
 
 	public void initializeDataBase() {
 
-		if (!getTable("Users")) {
-			createTable(usersConfig("Users"));
+		if (!getTable("User")) {
+			createTable(usersConfig("User"));
 		}
 
-		if (!getTable("Appointments")) {
-			createTable(appointmentsConfig("Appointments"));
+		if (!getTable("Appointment")) {
+			createTable(appointmentConfig("Appointment"));
 		}
 
 		if (!getTable("Client")) {
@@ -120,14 +120,14 @@ public class Initializer {
 		return createTableRequest;
 	}
 
-	private CreateTableRequest appointmentsConfig(String tableName) {
+	private CreateTableRequest appointmentConfig(String tableName) {
 
 		ArrayList<KeySchemaElement> keySchema = new ArrayList<KeySchemaElement>();
-		keySchema.add(new KeySchemaElement().withAttributeName("appointmentsId").withKeyType(KeyType.HASH));
+		keySchema.add(new KeySchemaElement().withAttributeName("appointmentId").withKeyType(KeyType.HASH));
 
 		ArrayList<AttributeDefinition> attributeDefinitions = new ArrayList<AttributeDefinition>();
 		attributeDefinitions.add(
-				new AttributeDefinition().withAttributeName("appointmentsId").withAttributeType(ScalarAttributeType.S));
+				new AttributeDefinition().withAttributeName("appointmentId").withAttributeType(ScalarAttributeType.S));
 		attributeDefinitions
 				.add(new AttributeDefinition().withAttributeName("userId").withAttributeType(ScalarAttributeType.S));
 		attributeDefinitions.add(new AttributeDefinition().withAttributeName("year").withAttributeType("N"));

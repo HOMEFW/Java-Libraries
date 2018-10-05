@@ -86,7 +86,7 @@ public class Register extends Base<User> {
 		try {
 
 			if (userId == null || details == null) {
-				throw new IllegalAccessError("dados inválidos!");
+				throw new IllegalAccessError("dados invalidos!");
 			}
 
 			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("userId", userId)
@@ -98,7 +98,7 @@ public class Register extends Base<User> {
 					// .withList(":a", Arrays.asList("Larry", "Moe", "Curly"))
 					).withReturnValues(ReturnValue.UPDATED_NEW);
 
-			super.updateItem("Users", updateItemSpec);
+			super.updateItem("User", updateItemSpec);
 
 			// UpdateItemOutcome outcome = super.updateItem("Users",
 			// updateItemSpec);

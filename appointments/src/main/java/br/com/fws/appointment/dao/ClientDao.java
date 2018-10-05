@@ -1,4 +1,4 @@
-package br.com.fws.appointements.dao;
+package br.com.fws.appointment.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 
-import br.com.fws.appointments.models.Client;
+import br.com.fws.appointment.models.Client;
 import br.com.fws.data.Base;
 
 public class ClientDao extends Base<Client> {

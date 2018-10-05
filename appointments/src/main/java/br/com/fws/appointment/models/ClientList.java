@@ -1,4 +1,4 @@
-package br.com.fws.appointments.models;
+package br.com.fws.appointment.models;
 
 import java.util.List;
 

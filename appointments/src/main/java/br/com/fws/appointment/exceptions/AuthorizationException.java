@@ -1,4 +1,4 @@
-package br.com.fws.appointements.exceptions;
+package br.com.fws.appointment.exceptions;
 
 import javax.xml.ws.WebFault;
 

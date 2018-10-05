@@ -7,9 +7,9 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import br.com.fws.appointements.resource.ClientService;
-import br.com.fws.appointments.models.Client;
-import br.com.fws.appointments.models.ClientList;
+import br.com.fws.appointment.models.Client;
+import br.com.fws.appointment.models.ClientList;
+import br.com.fws.appointment.resource.ClientService;
 
 public class ClientTest {
 	final UUID uuid = UUID.randomUUID();

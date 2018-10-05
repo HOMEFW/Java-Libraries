@@ -1,4 +1,4 @@
-package br.com.fws.appointements.resource;
+package br.com.fws.appointment.resource;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,15 +8,23 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.jws.soap.SOAPBinding.ParameterStyle;
+import javax.jws.soap.SOAPBinding.Style;
+import javax.jws.soap.SOAPBinding.Use;
 
-import br.com.fws.appointements.dao.ClientDao;
-import br.com.fws.appointements.dictionary.Message;
-import br.com.fws.appointements.exceptions.AuthorizationException;
-import br.com.fws.appointments.models.Client;
-import br.com.fws.appointments.models.ClientList;
+import br.com.fws.appointment.dao.ClientDao;
+import br.com.fws.appointment.dictionnary.Message;
+import br.com.fws.appointment.exceptions.AuthorizationException;
+import br.com.fws.appointment.models.Client;
+import br.com.fws.appointment.models.ClientList;
 
 @WebService
+@SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL, parameterStyle = ParameterStyle.WRAPPED)
 public class ClientService {
+
+	public ClientService() {
+	}
 
 	@WebMethod(operationName = "Register")
 	@WebResult(name = "SuccessConfirm")
@@ -41,11 +49,11 @@ public class ClientService {
 
 	private boolean isValid(Client data) throws Exception, IllegalArgumentException {
 		if (data.getClientName() == null || data.getClientName().isEmpty()) {
-			throw new IllegalArgumentException(Message.INVALIDCLIENTNAME);
+			throw new IllegalArgumentException(Message.INVALIDNAME);
 		}
 
 		if (getClient(data) != null) {
-			throw new IllegalArgumentException(Message.CLIENTNAMEALREADYEXISTS);
+			throw new IllegalArgumentException(Message.ALREADYEXISTS);
 		}
 		return true;
 	}
