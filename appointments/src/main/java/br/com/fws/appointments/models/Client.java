@@ -16,9 +16,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 @JsonRootName("Client")
 @DynamoDBTable(tableName = "Client")
-@XmlRootElement(name = "Client")
+@XmlRootElement
 public class Client implements Serializable {
-
 	/**
 	 * 
 	 */
@@ -28,6 +27,10 @@ public class Client implements Serializable {
 	private String clientName;
 	private Boolean active;
 	private String createdDate;
+
+	public Client() {
+
+	}
 
 	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
 	@DynamoDBAttribute(attributeName = "active")

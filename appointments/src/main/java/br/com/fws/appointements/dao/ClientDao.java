@@ -1,4 +1,4 @@
-package br.com.fws.appointements.Dao;
+package br.com.fws.appointements.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +53,31 @@ public class ClientDao extends Base<Client> {
 
 	public final Boolean save(Client data) throws Exception {
 		return super.saveItem(data);
+	}
+
+	public List<Client> getClientsByFilter(Client data) {
+		HashMap<String, Condition> scanCondition = new HashMap<String, Condition>();
+
+		if (data.getClientId() != null && !data.getClientId().isEmpty()) {
+			Condition condition = new Condition().withComparisonOperator(ComparisonOperator.EQ.toString())
+					.withAttributeValueList(new AttributeValue().withS(data.getClientId()));
+			scanCondition.put("clientId", condition);
+		}
+
+		if (data.getClientName() != null && !data.getClientName().isEmpty()) {
+			Condition condition = new Condition().withComparisonOperator(ComparisonOperator.CONTAINS.toString())
+					.withAttributeValueList(new AttributeValue().withS(data.getClientName()));
+			scanCondition.put("clientName", condition);
+		}
+
+		if (data.getActive() != null) {
+			Condition condition = new Condition().withComparisonOperator(ComparisonOperator.EQ)
+					.withAttributeValueList(new AttributeValue().withBOOL(data.getActive()));
+			scanCondition.put("active", condition);
+		}
+
+		List<Client> results = super.scanResultToListObject(scanCondition, Client.class);
+		return results;
 	}
 
 }
