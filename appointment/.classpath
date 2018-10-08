@@ -2,10 +2,10 @@
 <classpath>
 	<classpathentry excluding="test/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/test"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/commom"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/data"/>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391-sources.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_181"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/commom"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/data"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="com.amazonaws"/>
@@ -14,7 +14,7 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391-sources.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="com.amazonaws"/>
@@ -23,7 +23,7 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.7.1/jackson-databind-2.6.7.1.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.7.1/jackson-databind-2.6.7.1.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="com.fasterxml.jackson.core"/>
@@ -32,7 +32,7 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.6.0/jackson-annotations-2.6.0.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.6.0/jackson-annotations-2.6.0.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="com.fasterxml.jackson.core"/>
@@ -42,7 +42,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Quantum/.m2/repository/javax/ws/rs/javax.ws.rs-api/2.1.1/javax.ws.rs-api-2.1.1.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/javax/ws/rs/javax.ws.rs-api/2.1.1/javax.ws.rs-api-2.1.1.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="javax.ws.rs"/>

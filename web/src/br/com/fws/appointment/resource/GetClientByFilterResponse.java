@@ -1,0 +1,62 @@
+
+package br.com.fws.appointment.resource;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Classe Java de GetClientByFilterResponse complex type.
+ * 
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
+ * 
+ * <pre>
+ * &lt;complexType name="GetClientByFilterResponse">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Clients" type="{http://resource.appointment.fws.com.br/}clientList" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "GetClientByFilterResponse", propOrder = {
+    "clients"
+})
+public class GetClientByFilterResponse {
+
+    @XmlElement(name = "Clients")
+    protected ClientList clients;
+
+    /**
+     * Obtém o valor da propriedade clients.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ClientList }
+     *     
+     */
+    public ClientList getClients() {
+        return clients;
+    }
+
+    /**
+     * Define o valor da propriedade clients.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ClientList }
+     *     
+     */
+    public void setClients(ClientList value) {
+        this.clients = value;
+    }
+
+}
