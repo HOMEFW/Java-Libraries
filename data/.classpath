@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-core/1.11.391/aws-java-sdk-core-1.11.391-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.amazonaws"/>
+			<attribute name="maven.artifactId" value="aws-java-sdk-core"/>
+			<attribute name="maven.version" value="1.11.391"/>
+			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry exported="true" kind="lib" path="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391.jar" sourcepath="C:/Users/Quantum/.m2/repository/com/amazonaws/aws-java-sdk-dynamodb/1.11.391/aws-java-sdk-dynamodb-1.11.391-sources.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.amazonaws"/>
+			<attribute name="maven.artifactId" value="aws-java-sdk-dynamodb"/>
+			<attribute name="maven.version" value="1.11.391"/>
+			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
