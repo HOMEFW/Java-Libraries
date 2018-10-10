@@ -16,7 +16,7 @@ import br.com.fws.appointment.resource.ClientResource;
 
 @WebService(endpointInterface = "br.com.fws.appointment.service")
 @SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL, parameterStyle = ParameterStyle.WRAPPED)
-public class ClientService extends ClientResource {
+public class ClientService {
 
 	public ClientService() {
 	}
@@ -30,27 +30,29 @@ public class ClientService extends ClientResource {
 		if (!token.equals("1")) {
 			throw new AuthorizationException("invalid token");
 		}
-
-		return super.doRegister(data);
+		ClientResource resource = new ClientResource();
+		return resource.doRegister(data);
 	}
 
 	@WebMethod(operationName = "GetClient")
 	@WebResult(name = "Client")
 	public Client getClient(@WebParam(name = "ClientFilter") Client data) throws Exception {
-		return super.getClient(data);
+		ClientResource resource = new ClientResource();
+		return resource.getClient(data);
 	}
 
 	@WebMethod(operationName = "GetAllClients")
 	@WebResult(name = "Clients")
 	public ClientList getAllClients() throws Exception {
-		return super.getAllClients();
+		ClientResource resource = new ClientResource();
+		return resource.getAllClients();
 	}
 
 	@WebMethod(operationName = "GetClientByFilter")
 	@WebResult(name = "Clients")
 	public ClientList getClientsByFilter(@WebParam(name = "ClientData") Client data) throws Exception {
-
-		return super.getClientsByFilter(data);
+		ClientResource resource = new ClientResource();
+		return resource.getClientsByFilter(data);
 	}
 
 }
