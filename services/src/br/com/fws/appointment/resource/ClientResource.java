@@ -6,7 +6,6 @@ import java.util.List;
 
 import br.com.fws.appointment.dao.ClientDao;
 import br.com.fws.appointment.dictionnary.Message;
-import br.com.fws.appointment.exceptions.AuthorizationException;
 import br.com.fws.appointment.models.Client;
 import br.com.fws.appointment.models.ClientList;
 
@@ -15,7 +14,7 @@ public class ClientResource {
 	public ClientResource() {
 	}
 
-	public Boolean doRegister(Client data) throws AuthorizationException, IllegalArgumentException, Exception {
+	public Boolean doRegister(Client data) throws IllegalArgumentException, Exception {
 
 		if (isValid(data)) {
 			String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
