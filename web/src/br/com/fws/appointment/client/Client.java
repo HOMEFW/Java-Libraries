@@ -1,5 +1,5 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

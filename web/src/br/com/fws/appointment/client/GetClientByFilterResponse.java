@@ -1,5 +1,5 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de GetAllClientsResponse complex type.
+ * <p>Classe Java de GetClientByFilterResponse complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="GetAllClientsResponse">
+ * &lt;complexType name="GetClientByFilterResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Clients" type="{http://resource.appointment.fws.com.br/}clientList" minOccurs="0"/>
+ *         &lt;element name="Clients" type="{http://service.appointment.fws.com.br/}clientList" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetAllClientsResponse", propOrder = {
+@XmlType(name = "GetClientByFilterResponse", propOrder = {
     "clients"
 })
-public class GetAllClientsResponse {
+public class GetClientByFilterResponse {
 
     @XmlElement(name = "Clients")
     protected ClientList clients;

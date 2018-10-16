@@ -1,5 +1,5 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de RegisterResponse complex type.
+ * <p>Classe Java de GetClientResponse complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="RegisterResponse">
+ * &lt;complexType name="GetClientResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="SuccessConfirm" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="Client" type="{http://service.appointment.fws.com.br/}client" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RegisterResponse", propOrder = {
-    "successConfirm"
+@XmlType(name = "GetClientResponse", propOrder = {
+    "client"
 })
-public class RegisterResponse {
+public class GetClientResponse {
 
-    @XmlElement(name = "SuccessConfirm")
-    protected Boolean successConfirm;
+    @XmlElement(name = "Client")
+    protected Client client;
 
     /**
-     * Obtém o valor da propriedade successConfirm.
+     * Obtém o valor da propriedade client.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link Client }
      *     
      */
-    public Boolean isSuccessConfirm() {
-        return successConfirm;
+    public Client getClient() {
+        return client;
     }
 
     /**
-     * Define o valor da propriedade successConfirm.
+     * Define o valor da propriedade client.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link Client }
      *     
      */
-    public void setSuccessConfirm(Boolean value) {
-        this.successConfirm = value;
+    public void setClient(Client value) {
+        this.client = value;
     }
 
 }

@@ -1,23 +1,22 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de GetClientResponse complex type.
+ * <p>Classe Java de IllegalArgumentException complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="GetClientResponse">
+ * &lt;complexType name="IllegalArgumentException">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Client" type="{http://resource.appointment.fws.com.br/}client" minOccurs="0"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetClientResponse", propOrder = {
-    "client"
+@XmlType(name = "IllegalArgumentException", propOrder = {
+    "message"
 })
-public class GetClientResponse {
+public class IllegalArgumentException {
 
-    @XmlElement(name = "Client")
-    protected Client client;
+    protected String message;
 
     /**
-     * Obtém o valor da propriedade client.
+     * Obtém o valor da propriedade message.
      * 
      * @return
      *     possible object is
-     *     {@link Client }
+     *     {@link String }
      *     
      */
-    public Client getClient() {
-        return client;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Define o valor da propriedade client.
+     * Define o valor da propriedade message.
      * 
      * @param value
      *     allowed object is
-     *     {@link Client }
+     *     {@link String }
      *     
      */
-    public void setClient(Client value) {
-        this.client = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

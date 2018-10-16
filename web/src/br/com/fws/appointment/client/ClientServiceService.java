@@ -1,5 +1,5 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,20 +17,20 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "ClientServiceService", targetNamespace = "http://resource.appointment.fws.com.br/", wsdlLocation = "file:/C:/Users/Quantum/git/Java-Libraries/services/src/ClientServiceService.wsdl")
+@WebServiceClient(name = "ClientServiceService", targetNamespace = "http://service.appointment.fws.com.br/", wsdlLocation = "http://localhost:8080/service-0.0.1-SNAPSHOT/ClientService?wsdl")
 public class ClientServiceService
     extends Service
 {
 
     private final static URL CLIENTSERVICESERVICE_WSDL_LOCATION;
     private final static WebServiceException CLIENTSERVICESERVICE_EXCEPTION;
-    private final static QName CLIENTSERVICESERVICE_QNAME = new QName("http://resource.appointment.fws.com.br/", "ClientServiceService");
+    private final static QName CLIENTSERVICESERVICE_QNAME = new QName("http://service.appointment.fws.com.br/", "ClientServiceService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/Quantum/git/Java-Libraries/services/src/ClientServiceService.wsdl");
+            url = new URL("http://localhost:8080/service-0.0.1-SNAPSHOT/ClientService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -69,7 +69,7 @@ public class ClientServiceService
      */
     @WebEndpoint(name = "ClientServicePort")
     public ClientService getClientServicePort() {
-        return super.getPort(new QName("http://resource.appointment.fws.com.br/", "ClientServicePort"), ClientService.class);
+        return super.getPort(new QName("http://service.appointment.fws.com.br/", "ClientServicePort"), ClientService.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ClientServiceService
      */
     @WebEndpoint(name = "ClientServicePort")
     public ClientService getClientServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://resource.appointment.fws.com.br/", "ClientServicePort"), ClientService.class, features);
+        return super.getPort(new QName("http://service.appointment.fws.com.br/", "ClientServicePort"), ClientService.class, features);
     }
 
     private static URL __getWsdlLocation() {

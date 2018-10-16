@@ -1,5 +1,5 @@
 
-package br.com.fws.appointment.resource;
+package br.com.fws.appointment.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de GetClientByFilterResponse complex type.
+ * <p>Classe Java de RegisterResponse complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="GetClientByFilterResponse">
+ * &lt;complexType name="RegisterResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Clients" type="{http://resource.appointment.fws.com.br/}clientList" minOccurs="0"/>
+ *         &lt;element name="SuccessConfirm" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetClientByFilterResponse", propOrder = {
-    "clients"
+@XmlType(name = "RegisterResponse", propOrder = {
+    "successConfirm"
 })
-public class GetClientByFilterResponse {
+public class RegisterResponse {
 
-    @XmlElement(name = "Clients")
-    protected ClientList clients;
+    @XmlElement(name = "SuccessConfirm")
+    protected Boolean successConfirm;
 
     /**
-     * Obtém o valor da propriedade clients.
+     * Obtém o valor da propriedade successConfirm.
      * 
      * @return
      *     possible object is
-     *     {@link ClientList }
+     *     {@link Boolean }
      *     
      */
-    public ClientList getClients() {
-        return clients;
+    public Boolean isSuccessConfirm() {
+        return successConfirm;
     }
 
     /**
-     * Define o valor da propriedade clients.
+     * Define o valor da propriedade successConfirm.
      * 
      * @param value
      *     allowed object is
-     *     {@link ClientList }
+     *     {@link Boolean }
      *     
      */
-    public void setClients(ClientList value) {
-        this.clients = value;
+    public void setSuccessConfirm(Boolean value) {
+        this.successConfirm = value;
     }
 
 }
