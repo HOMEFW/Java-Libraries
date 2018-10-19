@@ -16,6 +16,10 @@ public class Exception_Exception
 {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
