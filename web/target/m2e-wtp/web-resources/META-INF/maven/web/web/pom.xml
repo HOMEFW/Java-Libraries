@@ -4,20 +4,18 @@
   <artifactId>web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <name>web</name>
   <dependencies>
-	<!-- https://mvnrepository.com/artifact/axis/axis -->
 	<dependency>
 	    <groupId>axis</groupId>
 	    <artifactId>axis</artifactId>
 	    <version>1.4</version>
 	</dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2-transport-http -->
-<dependency>
-    <groupId>org.apache.axis2</groupId>
-    <artifactId>axis2-transport-http</artifactId>
-    <version>1.7.8</version>
-</dependency>
-
+	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2-transport-http</artifactId>
+	    <version>1.7.8</version>
+	</dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -37,6 +35,32 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.10.0</version>
+        <executions>
+        	<execution>
+        		<phase>verify</phase>
+        		<goals>
+        			<goal>check</goal>
+        		</goals>
+       		</execution>
+    	</executions>
+      </plugin>
+		<plugin>
+		  <groupId>org.jacoco</groupId>
+		  <artifactId>jacoco-maven-plugin</artifactId>
+		  <version>0.8.2</version>
+		  <executions>
+		  	<execution>
+		  		<goals>
+		  			<goal>prepare-agent</goal>
+		  			<goal>report</goal>
+		  		</goals>
+		  	</execution>
+		  </executions>
+		</plugin>
     </plugins>
   </build>
 </project>

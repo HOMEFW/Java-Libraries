@@ -15,7 +15,7 @@ import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import br.com.fws.commom.Encryption;
 import br.com.fws.data.Base;
 import br.com.fws.profile.models.User;
-import br.com.fws.profile.models.UserDetails;;
+import br.com.fws.profile.models.UserDetails;
 
 public class Register extends Base<User> {
 

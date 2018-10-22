@@ -37,7 +37,7 @@ public interface ClientService {
     @WebMethod(operationName = "Register")
     @WebResult(name = "RegisterResponse", targetNamespace = "http://service.appointment.fws.com.br/", partName = "parameters")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-    public RegisterResponse register(
+    RegisterResponse register(
         @WebParam(name = "Register", targetNamespace = "http://service.appointment.fws.com.br/", partName = "parameters")
         Register parameters,
         @WebParam(name = "Token", targetNamespace = "http://service.appointment.fws.com.br/", header = true, partName = "Token")
@@ -56,7 +56,7 @@ public interface ClientService {
     @WebResult(name = "Client", targetNamespace = "")
     @RequestWrapper(localName = "GetClient", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetClient")
     @ResponseWrapper(localName = "GetClientResponse", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetClientResponse")
-    public Client getClient(
+    Client getClient(
         @WebParam(name = "ClientFilter", targetNamespace = "")
         Client clientFilter)
         throws Exception_Exception
@@ -73,7 +73,7 @@ public interface ClientService {
     @WebResult(name = "Clients", targetNamespace = "")
     @RequestWrapper(localName = "GetClientByFilter", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetClientByFilter")
     @ResponseWrapper(localName = "GetClientByFilterResponse", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetClientByFilterResponse")
-    public ClientList getClientByFilter(
+    ClientList getClientByFilter(
         @WebParam(name = "ClientData", targetNamespace = "")
         Client clientData)
         throws Exception_Exception
@@ -89,7 +89,7 @@ public interface ClientService {
     @WebResult(name = "Clients", targetNamespace = "")
     @RequestWrapper(localName = "GetAllClients", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetAllClients")
     @ResponseWrapper(localName = "GetAllClientsResponse", targetNamespace = "http://service.appointment.fws.com.br/", className = "br.com.fws.appointment.client.GetAllClientsResponse")
-    public ClientList getAllClients()
+    ClientList getAllClients()
         throws Exception_Exception
     ;
 

@@ -4,6 +4,7 @@
   <artifactId>service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <name>service</name>
   <dependencies>
 	<dependency>
 	    <groupId>com.amazonaws</groupId>
@@ -13,22 +14,48 @@
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-          <warSourceDirectory>WebContent</warSourceDirectory>
-        </configuration>
-      </plugin>
+	<plugins>
+		<plugin>
+		  <artifactId>maven-compiler-plugin</artifactId>
+		  <version>3.5.1</version>
+		  <configuration>
+		    <source>1.8</source>
+		    <target>1.8</target>
+		  </configuration>
+		</plugin>
+		<plugin>
+		  <artifactId>maven-war-plugin</artifactId>
+		  <version>3.0.0</version>
+		  <configuration>
+		    <warSourceDirectory>WebContent</warSourceDirectory>
+		  </configuration>
+		</plugin>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-pmd-plugin</artifactId>
+		  <version>3.10.0</version>
+		  <executions>
+		  	<execution>
+		  		<phase>verify</phase>
+		  		<goals>
+		  			<goal>check</goal>
+		  		</goals>
+		 		</execution>
+			</executions>
+		</plugin>
+		<plugin>
+		  <groupId>org.jacoco</groupId>
+		  <artifactId>jacoco-maven-plugin</artifactId>
+		  <version>0.8.2</version>
+		  <executions>
+		  	<execution>
+		  		<goals>
+		  			<goal>prepare-agent</goal>
+		  			<goal>report</goal>
+		  		</goals>
+		  	</execution>
+		  </executions>
+		</plugin>
     </plugins>
   </build>
 </project>
